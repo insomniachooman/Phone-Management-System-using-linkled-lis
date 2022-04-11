@@ -1,0 +1,284 @@
+#include <iostream>
+using namespace std;
+
+struct node
+{
+    int data;
+    node *next;
+    node *prev;
+};
+
+class dll
+{
+private:
+    node *head;
+    node *tail;
+    int count;
+public:
+    dll()
+    {
+        head = NULL;
+        tail = NULL;
+        count = 0;
+    }
+    void insert_at_beginning(int data)
+    {
+        node *temp = new node;
+        temp->data = data;
+        temp->next = NULL;
+        temp->prev = NULL;
+        if(head == NULL)
+        {
+            head = temp;
+            tail = temp;
+        }
+        else
+        {
+            temp->next = head;
+            head->prev = temp;
+            head = temp;
+        }
+        count++;
+    }
+    void insert_at_end(int data)
+    {
+        node *temp = new node;
+        temp->data = data;
+        temp->next = NULL;
+        temp->prev = NULL;
+        if(head == NULL)
+        {
+            head = temp;
+            tail = temp;
+        }
+        else
+        {
+            tail->next = temp;
+            temp->prev = tail;
+            tail = temp;
+        }
+        count++;
+    }
+    void insert_at_position(int data, int pos)
+    {
+        if(pos > count)
+        {
+            cout << "Invalid position\n";
+            return;
+        }
+        node *temp = new node;
+        temp->data = data;
+        temp->next = NULL;
+        temp->prev = NULL;
+        if(head == NULL)
+        {
+            head = temp;
+            tail = temp;
+        }
+        else
+        {
+            node *ptr = head;
+            for(int i = 1; i < pos; i++)
+            {
+                ptr = ptr->next;
+            }
+            temp->next = ptr->next;
+            ptr->next->prev = temp;
+            ptr->next = temp;
+            temp->prev = ptr;
+        }
+        count++;
+    }
+    void delete_at_beginning()
+    {
+        if(head == NULL)
+        {
+            cout << "List is empty\n";
+            return;
+        }
+        node *temp = head;
+        head = head->next;
+        head->prev = NULL;
+        delete temp;
+        count--;
+    }
+    void delete_at_end()
+    {
+        if(head == NULL)
+        {
+            cout << "List is empty\n";
+            return;
+        }
+        node *temp = tail;
+        tail = tail->prev;
+        tail->next = NULL;
+        delete temp;
+        count--;
+    }
+    void delete_at_position(int pos)
+    {
+        if(head == NULL)
+        {
+            cout << "List is empty\n";
+            return;
+        }
+        if(pos > count)
+        {
+            cout << "Invalid position\n";
+            return;
+        }
+        node *ptr = head;
+        for(int i = 1; i < pos; i++)
+        {
+            ptr = ptr->next;
+        }
+        ptr->prev->next = ptr->next;
+        ptr->next->prev = ptr->prev;
+        delete ptr;
+        count--;
+    }
+    void display()
+    {
+        if(head == NULL)
+        {
+            cout << "List is empty\n";
+            return;
+        }
+        node *ptr = head;
+        while(ptr != NULL)
+        {
+            cout << ptr->data << " ";
+            ptr = ptr->next;
+        }
+        cout << endl;
+    }
+};
+
+
+int main()
+{
+    dll obj;
+    obj.insert_at_beginning(1);
+    obj.insert_at_beginning(2);
+    obj.insert_at_beginning(3);
+    obj.insert_at_beginning(4);
+    obj.insert_at_beginning(5);
+    obj.insert_at_beginning(6);
+    obj.insert_at_beginning(7);
+    obj.insert_at_beginning(8);
+    obj.insert_at_beginning(9);
+    obj.insert_at_beginning(10);
+    obj.insert_at_beginning(11);
+    obj.insert_at_beginning(12);
+    obj.insert_at_beginning(13);
+    obj.insert_at_beginning(14);
+    obj.insert_at_beginning(15);
+    obj.insert_at_beginning(16);
+    obj.insert_at_beginning(17);
+    obj.insert_at_beginning(18);
+    obj.insert_at_beginning(19);
+    obj.insert_at_beginning(20);
+    obj.insert_at_beginning(21);
+    obj.insert_at_beginning(22);
+    obj.insert_at_beginning(23);
+    obj.insert_at_beginning(24);
+    obj.insert_at_beginning(25);
+    obj.insert_at_beginning(26);
+    obj.insert_at_beginning(27);
+    obj.insert_at_beginning(28);
+    obj.insert_at_beginning(29);
+    obj.insert_at_beginning(30);
+    obj.insert_at_beginning(31);
+    obj.insert_at_beginning(32);
+    obj.insert_at_beginning(33);
+    obj.insert_at_beginning(34);
+    obj.insert_at_beginning(35);
+    obj.insert_at_beginning(36);
+    obj.insert_at_beginning(37);
+    obj.insert_at_beginning(38);
+
+    obj.display();
+
+    obj.delete_at_beginning();
+    obj.display();
+
+    obj.delete_at_end();
+    obj.display();
+
+    obj.delete_at_position(5);
+    obj.display();
+
+    obj.insert_at_position(100, 5);
+    obj.display();
+
+    obj.insert_at_position(200, 5);
+    obj.display();
+
+    obj.insert_at_position(300, 5);
+    obj.display();
+
+    obj.insert_at_position(400, 5);
+    obj.display();
+
+    obj.insert_at_position(500, 5);
+    obj.display();
+
+    obj.insert_at_position(600, 5);
+    obj.display();
+
+    obj.insert_at_position(700, 5);
+    obj.display();
+
+    obj.insert_at_position(800, 5);
+    obj.display();
+
+    obj.insert_at_position(900, 5);
+    obj.display();
+
+    obj.insert_at_position(1000, 5);
+    obj.display();
+
+    obj.insert_at_position(1100, 5);
+    obj.display();
+
+    obj.insert_at_position(1200, 5);
+    obj.display();
+
+    obj.insert_at_position(1300, 5);
+    obj.display();
+
+    obj.insert_at_position(1400, 5);
+    obj.display();
+
+    obj.insert_at_position(1500, 5);
+    obj.display();
+
+    obj.insert_at_position(1600, 5);
+    obj.display();
+
+    obj.insert_at_position(1700, 5);
+    obj.display();
+
+    obj.insert_at_position(1800, 5);
+    obj.display();
+
+    obj.insert_at_position(1900, 5);
+    obj.display();
+
+    obj.insert_at_position(2000, 5);
+    obj.display();
+
+    obj.insert_at_position(2100, 5);
+    obj.display();
+
+    obj.insert_at_position(2200, 5);
+    obj.display();
+
+    obj.insert_at_position(2300, 5);
+    obj.display();
+
+    obj.insert_at_position(2400, 5);
+
+
+    return 0;
+}
